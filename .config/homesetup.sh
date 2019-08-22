@@ -16,6 +16,11 @@ echo
 echo $pass | sudo -S apt install -y wget git curl tmux neovim util-linux \
 dconf-tools dconf-gsettings-backend dconf-cli dconf-service uuid-runtime \
 python-dev python-pip python3-dev python3-pip libudev-dev
+if [ $? -ne 0 ]; then
+  echo Apt failed 
+  echo Exiting...
+  exit
+ fi
 echo Getting caps2esc..
 echo
 wget -O $HOME/Downloads/caps2esc-latest.tar.gz https://github.com/oblitum/caps2esc/archive/v1.0.4.tar.gz
@@ -47,5 +52,5 @@ gnome-terminal -- nvim
 
 #install gnome terminal nord theme
 git clone https://github.com/arcticicestudio/nord-gnome-terminal
-./nord-gnome-terminal/nord.sh
+./nord-gnome-terminal/src/nord.sh
 
